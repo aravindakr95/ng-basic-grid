@@ -1,7 +1,11 @@
 <div class="container">
 
   <div class="row">
-    <app-table-filter (filterValue)="onFilterInvoke($event)"></app-table-filter>
+    <app-table-filter
+      (filterValue)="onFilterInvoke($event)"
+      [enableFilteringDebounce]="true"
+      [filteringDebounceTime]="1000">
+    </app-table-filter>
   </div>
 
   <div class="row table-responsive">

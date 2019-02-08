@@ -12,13 +12,13 @@ export class MainService {
   constructor(private http: HttpClient) {
   }
 
-  public getApiData(): Observable<ExampleData[]> {
-    return this.http.get<ExampleData[]>(MainService.url);
-  }
-
   public getFilterApiData(filterValue: string): Observable<ExampleData[]> {
-    const params = new HttpParams().set('filter', filterValue);
 
-    return this.http.get<ExampleData[]>(MainService.url, { params });
+    if (filterValue) {
+      const params = new HttpParams().set('filter', filterValue);
+
+      return this.http.get<ExampleData[]>(MainService.url, { params });
+    }
+    return this.http.get<ExampleData[]>(MainService.url);
   }
 }
